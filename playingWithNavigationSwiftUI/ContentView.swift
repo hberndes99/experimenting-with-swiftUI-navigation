@@ -16,10 +16,19 @@ struct PageFour: View {
     }
 }
 
+struct DataPage: View {
+    var greeting: String
+    
+    var body: some View {
+        Text("the data passed along is: \(greeting)")
+    }
+}
+
 struct ContentView: View {
     
     @State var wantToShowPage3: Bool = false
     @ State var rightOrLeft: String? = nil
+    var greeting: String = "hello, I'm learning nav with Swift UI"
     
     var body: some View {
         NavigationView {
@@ -50,6 +59,10 @@ struct ContentView: View {
                 
                 NavigationLink(destination: PageFour()) {
                     Text("go to page 4")
+                }.padding(.bottom)
+                
+                NavigationLink(destination: DataPage(greeting: greeting)) {
+                    Text("see something displayed")
                 }
             }
         }
