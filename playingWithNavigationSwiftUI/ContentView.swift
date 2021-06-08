@@ -24,11 +24,31 @@ struct DataPage: View {
     }
 }
 
+struct Person {
+    var firstName: String
+    var secondName: String
+    var age: Int
+}
+
+struct ProfilePage: View {
+    var person: Person
+    
+    var body: some View {
+        VStack {
+            Circle().size(width: 100, height: 100)
+            Text("\(person.firstName)")
+            Text("\(person.secondName)")
+            Text("\(person.age)")
+        }
+    }
+}
+
 struct ContentView: View {
     
     @State var wantToShowPage3: Bool = false
     @ State var rightOrLeft: String? = nil
     var greeting: String = "hello, I'm learning nav with Swift UI"
+    var harriette = Person(firstName: "harriette", secondName: "berndes", age: 22)
     
     var body: some View {
         NavigationView {
@@ -63,6 +83,10 @@ struct ContentView: View {
                 
                 NavigationLink(destination: DataPage(greeting: greeting)) {
                     Text("see something displayed")
+                }.padding(.bottom)
+                
+                NavigationLink(destination: ProfilePage(person: harriette)) {
+                    Text("go to profile page")
                 }
             }
         }
