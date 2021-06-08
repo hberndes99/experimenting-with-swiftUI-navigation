@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+
+
+struct PageFour: View {
+    var body: some View {
+        Text("made it to page 4!")
+        Text("page 4 is its own view")
+    }
+}
+
 struct ContentView: View {
     
     @State var wantToShowPage3: Bool = false
@@ -37,6 +46,10 @@ struct ContentView: View {
                             self.rightOrLeft = "right"
                         }
                     }
+                }.padding(.bottom)
+                
+                NavigationLink(destination: PageFour()) {
+                    Text("go to page 4")
                 }
             }
         }
